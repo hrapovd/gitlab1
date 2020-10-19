@@ -11,6 +11,6 @@ test:qa:
 test:other:
     stage: test
     rules:
-      - if: '$CI_COMMIT_TAG !~ /^[qQ][aA]-/'
+      - if: '$CI_COMMIT_BRANCH == devel'
     script:
         - "echo -e \"It from NOT qa-*\""
