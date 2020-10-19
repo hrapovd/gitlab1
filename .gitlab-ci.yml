@@ -1,17 +1,16 @@
 stages: 
     - test
 
-test:1:
+test:qa:
     stage: test
     rules:
         - if: '$CI_COMMIT_TAG =~ /^[qQ][aA]-/'
     script:
         - "echo -e \"It from qa-*\""
 
-test:2:
+test:other:
     stage: test
     rules:
-      - if: '$CI_COMMIT_TAG == null'
-      - when: master
+      - if: '$CI_COMMIT_TAG !~ /^[qQ][aA]-/'
     script:
-        - "echo -e \"It from not qa-*\""
+        - "echo -e \"It from NOT qa-*\""
